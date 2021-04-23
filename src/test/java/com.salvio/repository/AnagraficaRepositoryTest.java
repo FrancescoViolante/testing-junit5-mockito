@@ -20,7 +20,14 @@ public class AnagraficaRepositoryTest {
 
     @Test
     public void getAll() {
+
+        inserisciAnagrafica(1, "mario", "rossi", "mario13f9809a");
+        inserisciAnagrafica(2, "ciccio", "pasticcio", "bello13f9809a");
+        inserisciAnagrafica(3, "jonh", "smith", "giova13f9809a");
+        inserisciAnagrafica(4, "gennaro", "esposito", "genna13f9809a");
+
         List<Anagrafica> result = anagraficaRepository.getAll();
+
 
         assertThat(result.get(0))
                 .isEqualTo(
@@ -56,31 +63,6 @@ public class AnagraficaRepositoryTest {
                                 .build());
     }
 
-    @Test
-    public void getAll2() {
-
-        inserisciAnagrafica(5, "pinco", "pallino", "pinco13f9809a");
-        inserisciAnagrafica(6, "giuseppe", "garibaldi", "gariba13f9809a");
-
-        List<Anagrafica> result = anagraficaRepository.getAll();
-
-        assertThat(result.get(4))
-                .isEqualTo(
-                        Anagrafica.builder()
-                                .id(5)
-                                .nome("pinco")
-                                .cognome("pallino")
-                                .codiceFiscale("pinco13f9809a")
-                                .build());
-        assertThat(result.get(5))
-                .isEqualTo(
-                        Anagrafica.builder()
-                                .id(6)
-                                .nome("giuseppe")
-                                .cognome("garibaldi")
-                                .codiceFiscale("gariba13f9809a")
-                                .build());
-    }
 
     @Test
     void getByCodiceFiscale() {
